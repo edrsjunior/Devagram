@@ -25,7 +25,7 @@ class _LoginViewState extends State<LoginView> {
           children: [
             Image.asset("assets/imgs/Logo.png"),
             const Padding(
-              padding: EdgeInsets.only(bottom: 0, left: 50, top: 0, right: 0),
+              padding: EdgeInsets.only(bottom: 0, left: 32, top: 0, right: 32),
               child:
                 TextField(
                   style: TextStyle(color: primaryColor),
@@ -35,6 +35,48 @@ class _LoginViewState extends State<LoginView> {
                   ),
                 )
             ),
+            const Padding(
+                padding: EdgeInsets.only(bottom: 0, left: 32, top: 0, right: 32),
+                child:
+                TextField(
+                  obscureText: true,
+                  style: TextStyle(color: primaryColor),
+                  decoration: InputDecoration(
+                    icon: ImageIcon(AssetImage('assets/icos/key.png'), color: primaryColor),
+                    hintText: 'Senha',
+                  ),
+                )
+            ),
+            Padding(
+              padding: const EdgeInsets.only(bottom: 0, left: 32, top: 48, right: 32),
+              child: TextButton(
+                    onPressed: () {},
+                    style: TextButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8), // <-- Radius
+                      ),
+                      foregroundColor: Colors.white,
+                      backgroundColor: primaryColor,
+                      minimumSize: Size(size.width,48),
+                    ),
+                    child: const Text('Login'),
+                ),
+            ),
+             const Padding(
+              padding: EdgeInsets.only(bottom: 0, left: 0, top: 24, right: 0),
+              child: Text(
+                  'Não possui conta?',
+                  style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: grayColor)
+              ),
+            ),
+            const Text('Faça seu cadastro agora!',
+            style: TextStyle(
+              fontSize: 14,
+              fontWeight: FontWeight.bold,
+              color: primaryColor,
+              decoration: TextDecoration.underline,
+            ),
+            )
             ],
         ),
       )
