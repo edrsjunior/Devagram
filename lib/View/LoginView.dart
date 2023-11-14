@@ -1,6 +1,9 @@
 import 'package:devagram_flutter/Constant/Colors.dart';
+import 'package:devagram_flutter/Util/ScreenConverter.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../Component/CustomTextField.dart';
 
 class LoginView extends StatefulWidget{
   @override
@@ -12,8 +15,8 @@ class _LoginViewState extends State<LoginView> {
 
   @override
   Widget build(BuildContext context) {
-
     Size size = MediaQuery.of(context).size;
+
 
     return Scaffold(
       body: SizedBox(
@@ -21,50 +24,60 @@ class _LoginViewState extends State<LoginView> {
         width: size.width,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Image.asset("assets/imgs/Logo.png"),
-            const Padding(
-              padding: EdgeInsets.only(bottom: 0, left: 32, top: 0, right: 32),
-              child:
-                TextField(
-                  style: TextStyle(color: primaryColor),
-                  decoration: InputDecoration(
-                    icon: ImageIcon(AssetImage('assets/icos/envelope.png'), color: primaryColor),
-                    hintText: 'Email',
-                  ),
-                )
+            Padding(
+                padding: EdgeInsets.only(bottom: 0, left: 0, top: convertHeight(133, size.height), right: 0),
+                child: Image.asset("assets/imgs/Logo.png")
             ),
-            const Padding(
-                padding: EdgeInsets.only(bottom: 0, left: 32, top: 0, right: 32),
-                child:
-                TextField(
-                  obscureText: true,
-                  style: TextStyle(color: primaryColor),
-                  decoration: InputDecoration(
-                    icon: ImageIcon(AssetImage('assets/icos/key.png'), color: primaryColor),
-                    hintText: 'Senha',
-                  ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 0,
+                  left: convertWidth(32, size.width),
+                  top: convertHeight(56, size.height),
+                  right: convertWidth(32, size.width)),
+              child:
+                const CustomTextField(
+                  textHint: 'Email',
+                  iconPath: 'assets/icos/envelope.png',
                 )
             ),
             Padding(
-              padding: const EdgeInsets.only(bottom: 0, left: 32, top: 48, right: 32),
+                padding: EdgeInsets.only(bottom: 0,
+                    left: convertWidth(32, size.width),
+                    top: convertHeight(24, size.height),
+                    right: convertWidth(32, size.width)),
+                child:
+                const CustomTextField(
+                  textHint: 'Senha',
+                  iconPath: 'assets/icos/key.png',
+                  obscureText: true,
+                )
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: 0,
+                  left: convertWidth(32, size.width),
+                  top: convertHeight(40, size.height),
+                  right: convertWidth(32, size.width)),
               child: TextButton(
                     onPressed: () {},
                     style: TextButton.styleFrom(
+                      textStyle: TextStyle(
+                        fontSize: convertHeight(16, size.height),
+                        fontWeight: FontWeight.w600
+                      ),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(8), // <-- Radius
                       ),
                       foregroundColor: Colors.white,
                       backgroundColor: primaryColor,
-                      minimumSize: Size(size.width,48),
+                      minimumSize: Size(size.width,convertHeight(48, size.height)),
                     ),
                     child: const Text('Login'),
                 ),
             ),
-             const Padding(
-              padding: EdgeInsets.only(bottom: 0, left: 0, top: 24, right: 0),
-              child: Text(
+            Padding(
+              padding: EdgeInsets.only(bottom: 0, left: 0, top: convertHeight(24, size.height), right: 0),
+              child: const Text(
                   'Não possui conta?',
                   style: TextStyle(fontSize: 14,fontWeight: FontWeight.w400,color: grayColor)
               ),
@@ -84,3 +97,4 @@ class _LoginViewState extends State<LoginView> {
   }
 
 }
+
